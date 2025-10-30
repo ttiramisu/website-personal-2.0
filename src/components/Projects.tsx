@@ -29,6 +29,17 @@ export default function Projects() {
         Projects
       </motion.h2>
 
+      {/* Terminal-style tagline */}
+      <motion.p
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="text-lg md:text-xl text-gray-300 max-w-2xl font-mono mb-10"
+      >
+        <span className="text-yellow-400">~$</span> Top most projects
+        <span className="blinking-cursor text-yellow-400"> |</span>
+      </motion.p>
+
       {/* Projects grid */}
       <div className="grid md:grid-cols-3 gap-10 w-full max-w-6xl">
         {topProjects.map((project, idx) => (
