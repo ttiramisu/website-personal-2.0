@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 export default function Timeline() {
   return (
-    <section
+    <section id="education"
       className="min-h-screen flex flex-col justify-center items-center text-left px-5 bg-gradient-to-b from-black/90 via-black/90 to-black/90 select-none"
     >
       {/* Terminal-style path */}

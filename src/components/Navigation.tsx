@@ -3,17 +3,36 @@ import { Menu, X } from "lucide-react";
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
-
   const navItems = ["About", "Education", "Projects", "Resume"];
+
+  // Smooth scroll handler
+  const handleScroll = (id: string) => {
+    const element = document.getElementById(id);
+    if (!element) return;
+
+    // Navbar height to offset
+    const navHeight = document.querySelector("nav")?.clientHeight || 0;
+
+    const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+    const offsetPosition = elementPosition - navHeight;
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: "smooth",
+    });
+    setIsOpen(false); // Close mobile menu
+  };
 
   return (
     <nav className="fixed top-0 left-0 w-full z-50 bg-black/92 border-b border-yellow-600/30 backdrop-blur-md font-mono text-yellow-400 shadow-[0_0_10px_rgba(255,255,0,0.15)]">
-      {/* Main nav bar */}
       <div className="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between">
-        {/* Logo / Name */}
         <a
           href="#home"
           className="text-lg md:text-xl font-bold tracking-tight hover:text-yellow-300 transition-colors"
+          onClick={(e) => {
+            e.preventDefault();
+            handleScroll("home");
+          }}
         >
           ttiramisu
         </a>
@@ -24,6 +43,10 @@ export default function Navigation() {
             <li key={item}>
               <a
                 href={`#${item.toLowerCase()}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleScroll(item.toLowerCase());
+                }}
                 className="relative group hover:text-yellow-300 transition-colors"
               >
                 <span className="select-none">$</span> {item.toLowerCase()}
@@ -44,14 +67,11 @@ export default function Navigation() {
 
       {/* Terminal path below nav */}
       <div className="max-w-6xl mx-auto px-6 py-2 text-sm text-yellow-400 font-mono border-t border-yellow-600/20 flex items-center space-x-2">
-        {/* LED dots */}
         <div className="flex space-x-1.5">
           <span className="w-2 h-2 rounded-full bg-red-500/80 shadow-[0_0_4px_rgba(255,0,0,0.6)]"></span>
           <span className="w-2 h-2 rounded-full bg-yellow-400/80 shadow-[0_0_4px_rgba(255,255,0,0.6)]"></span>
           <span className="w-2 h-2 rounded-full bg-green-500/80 shadow-[0_0_4px_rgba(0,255,0,0.6)]"></span>
         </div>
-
-        {/* Terminal path */}
         <span className="tracking-tight text-xs">
           <span className="font-bold">ttiramisu@ttiramisu</span>:/mnt/website
         </span>
@@ -64,7 +84,10 @@ export default function Navigation() {
             <li key={item}>
               <a
                 href={`#${item.toLowerCase()}`}
-                onClick={() => setIsOpen(false)}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleScroll(item.toLowerCase());
+                }}
                 className="block hover:text-yellow-300 transition-colors"
               >
                 $ {item.toLowerCase()}

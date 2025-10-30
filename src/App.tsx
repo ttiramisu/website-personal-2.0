@@ -14,7 +14,6 @@ function App() {
       <Navigation />
       <Hero />
       <About />
-      <div id="education" className="bg-gradient-to-b from-black/90 via-black/90 to-black/90"></div>
       <Timeline />
       <Projects />
       <Resume />
