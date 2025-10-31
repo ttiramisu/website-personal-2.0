@@ -8,7 +8,27 @@ import Footer from "./components/Footer";
 
 import "./App.css";
 
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+
 function App() {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const section = document.querySelector(location.hash);
+      if (section) {
+        const navHeight = document.querySelector("nav")?.clientHeight || 0;
+        const sectionTop =
+          section.getBoundingClientRect().top + window.pageYOffset;
+        window.scrollTo({
+          top: sectionTop - navHeight - 10, // add some extra padding if you want
+          behavior: "smooth",
+        });
+      }
+    }
+  }, [location]);
+
   return (
     <>
       <Navigation />

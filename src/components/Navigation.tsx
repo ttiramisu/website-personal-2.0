@@ -20,7 +20,7 @@ export default function Navigation() {
       top: offsetPosition,
       behavior: "smooth",
     });
-    setIsOpen(false); // Close mobile menu
+    setIsOpen(false);
   };
 
   return (
