@@ -1,6 +1,5 @@
 import { projects } from "../data/projectsData";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
 
 export default function AllProjects() {
   return (
