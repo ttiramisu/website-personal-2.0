@@ -13,7 +13,7 @@ export default function Footer() {
 
       {/* Right side */}
       <div className="text-right text-sm tracking-tight">
-        Designed & Built with <span className="text-red-500">♥</span> using Vite.js
+        Designed & Built with <span className="text-red-500">♥</span> using Vite
       </div>
     </footer>
   );
