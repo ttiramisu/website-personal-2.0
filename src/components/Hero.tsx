@@ -109,7 +109,7 @@ export default function Hero() {
             transition={{ type: "spring", stiffness: 250, damping: 20 }}
             className="bg-black/90 text-yellow-300 font-mono p-4 rounded-lg border border-yellow-600 shadow-2xl z-50 max-w-xs text-left"
           >
-            <p className="text-yellow-400 text-xs">Latest commit: </p>
+            <p className="text-yellow-400 text-xs">Latest GitHub commit: </p>
             <p>
               <span className="text-yellow-400">$</span> {commitInfo.repo}
             </p>
