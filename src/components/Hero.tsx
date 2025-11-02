@@ -117,7 +117,9 @@ export default function Hero() {
               {commitInfo.message}
             </p>
             <p className="text-yellow-400 text-xs mt-2">
-              {commitInfo.timeAgo} ago
+              {commitInfo.timeAgo === "just now"
+                ? commitInfo.timeAgo
+                : `${commitInfo.timeAgo} ago`}
             </p>
           </motion.div>
         )}
