@@ -1,4 +1,5 @@
 import { projects } from "../data/projectsData";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
 export default function Projects() {
@@ -92,12 +93,12 @@ export default function Projects() {
         transition={{ duration: 0.8 }}
         className="mt-8"
       >
-        <a
-          href="/projects"
+        <Link
+          to="/projects"
           className="px-6 py-3 border border-yellow-600 text-yellow-400 font-mono rounded-xl hover:bg-yellow-400 hover:text-black transition-colors shadow-[0_0_15px_rgba(255,255,0,0.2)]"
         >
           View All Projects →
-        </a>
+        </Link>
       </motion.div>
 
       {/* Accent underline */}
