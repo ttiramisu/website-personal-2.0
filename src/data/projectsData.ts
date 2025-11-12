@@ -21,25 +21,25 @@ export const projects: Project[] = [
   {
     name: "Homework Tracker",
     desc: "A simple homework tracker to track homeworks and deadlines",
-    tech: ["Electron", "HTML", "CSS", "JS"],
+    tech: ["Electron", "HTML", "CSS", "JavaScript"],
     link: "https://github.com/ttiramisu/hw-tracker",
   },
   {
     name: "Music Player",
     desc: "A simple music player that plays local music files",
-    tech: ["Expo", "React Native"],
+    tech: ["Expo", "React Native", "TypeScript"],
     link: "https://github.com/ttiramisu/music-player",
   },
   {
     name: "AYCF Website 2025",
     desc: "Website for Asian Youth Chinese Forum 2025",
-    tech: ["HTML", "CSS", "JS", "Bootstrap"],
+    tech: ["HTML", "CSS", "JavaScript", "Bootstrap"],
     link: "https://github.com/Summerflake/AYCF-WEBSITE-2025",
   },
   {
     name: "Winterflake",
     desc: "Website for the Winterflake CTF team",
-    tech: ["React", "Vite"],
+    tech: ["React", "Vite", "TypeScript"],
     link: "https://github.com/ttiramisu/winterflake",
   },
   {
@@ -51,7 +51,7 @@ export const projects: Project[] = [
   {
     name: "Fire Chat",
     desc: "A sketchy real-time chatting application (pls do not hack)",
-    tech: ["HTML", "CSS", "JS", "Firebase"],
+    tech: ["HTML", "CSS", "JavaScript", "Firebase"],
     link: "https://github.com/ttiramisu/online-chat",
   },
   {
