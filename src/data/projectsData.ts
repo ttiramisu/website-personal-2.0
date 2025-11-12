@@ -31,9 +31,45 @@ export const projects: Project[] = [
     link: "https://github.com/ttiramisu/music-player",
   },
   {
+    name: "AYCF Website 2025",
+    desc: "Website for Asian Youth Chinese Forum 2025",
+    tech: ["HTML", "CSS", "JS", "Bootstrap"],
+    link: "https://github.com/Summerflake/AYCF-WEBSITE-2025",
+  },
+  {
+    name: "Winterflake",
+    desc: "Website for the Winterflake CTF team",
+    tech: ["React", "Vite"],
+    link: "https://github.com/ttiramisu/winterflake",
+  },
+  {
     name: "Website 2023",
     desc: "A multi-paged website that shows the history of the silkroad",
     tech: ["Python", "Flask", "Bootstrap"],
     link: "https://github.com/ttiramisu/website-2023",
+  },
+  {
+    name: "Fire Chat",
+    desc: "A sketchy real-time chatting application (pls do not hack)",
+    tech: ["HTML", "CSS", "JS", "Firebase"],
+    link: "https://github.com/ttiramisu/online-chat",
+  },
+  {
+    name: "CNY 2025 Publicity",
+    desc: "Posters for HCI CNY 2025 publicity",
+    tech: ["Canva"],
+    link: "/cny_compressed.pdf",
+  },
+  {
+    name: "CLEP Council Logo",
+    desc: "New HCI CLEP Council Logo",
+    tech: ["Canva", "Concepts"],
+    link: "/clepc_compressed.pdf",
+  },
+  {
+    name: "Book Publicity",
+    desc: "Publicity for story writing competition",
+    tech: ["Canva"],
+    link: "/HGWX_compressed.pdf",
   },
 ];

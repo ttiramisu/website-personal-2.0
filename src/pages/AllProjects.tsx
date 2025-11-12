@@ -1,7 +1,22 @@
 import { projects } from "../data/projectsData";
 import { motion } from "framer-motion";
 
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+
 export default function AllProjects() {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.replace("#", "");
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, [location]);
+
   return (
     <section
       id="all-projects"
@@ -46,25 +61,19 @@ export default function AllProjects() {
         transition={{ duration: 0.9 }}
         className="grid sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-6xl w-full"
       >
-        {projects.map((project, idx) => (
-          <motion.div
-            key={idx}
-            initial={{ opacity: 0, y: 30, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 0.5, delay: idx * 0.1 }}
-            className="relative bg-black/70 p-6 rounded-2xl border border-yellow-600/30 shadow-[0_0_15px_rgba(255,255,0,0.1)] hover:shadow-[0_0_25px_rgba(255,255,0,0.4)] transform transition-all duration-300 flex flex-col justify-between"
-          >
-            {/* Title */}
-            <div className="absolute top-0 left-0 bg-yellow-600/20 text-yellow-400 font-mono px-4 py-1 rounded-br-2xl text-sm tracking-tight">
+        {projects.map((project) => (
+          <motion.div className="bg-black/80 pb-6 rounded-2xl border border-yellow-600/20 shadow-[0_0_15px_rgba(255,255,0,0.1)] hover:shadow-[0_0_25px_rgba(255,255,0,0.4)] transform transition-all duration-300 flex flex-col justify-between">
+            {/* Neon glowing tab */}
+            <div className="bg-yellow-600/30 text-yellow-400 font-mono px-4 py-1 rounded-tl-2xl rounded-tr-2xl text-md tracking-tight">
               {project.name}
             </div>
 
-            {/* Description */}
-            <div className="mt-6 flex-1">
+            {/* Project description */}
+            <div className="mx-6 mt-6 flex-1">
               <p className="text-gray-300 mb-4 font-mono">{project.desc}</p>
 
-              {/* Tech Stack */}
-              <div className="flex flex-wrap justify-center gap-2">
+              {/* Tech pills */}
+              <div className="mx-6 flex flex-wrap justify-center gap-2">
                 {project.tech.map((tech) => (
                   <span
                     key={tech}
@@ -76,12 +85,12 @@ export default function AllProjects() {
               </div>
             </div>
 
-            {/* View Project Button */}
+            {/* View Project button */}
             <a
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-6 inline-block px-4 py-2 border border-yellow-600 text-yellow-400 font-mono rounded-xl hover:bg-yellow-400 hover:text-black transition-colors"
+              className="mx-6 mt-6 inline-block px-4 py-2 border border-yellow-600 text-yellow-400 font-mono rounded-xl hover:bg-yellow-400 hover:text-black transition-colors"
             >
               View Project
             </a>

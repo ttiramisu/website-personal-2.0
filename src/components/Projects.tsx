@@ -49,19 +49,19 @@ export default function Projects() {
             initial={{ opacity: 0, y: 30, scale: 0.95 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.6, delay: idx * 0.2 }}
-            className="relative bg-black/80 p-6 rounded-2xl border border-yellow-600/20 shadow-[0_0_15px_rgba(255,255,0,0.1)] hover:shadow-[0_0_25px_rgba(255,255,0,0.4)] transform transition-all duration-300 flex flex-col justify-between"
+            className="bg-black/80 pb-6 rounded-2xl border border-yellow-600/20 shadow-[0_0_15px_rgba(255,255,0,0.1)] hover:shadow-[0_0_25px_rgba(255,255,0,0.4)] transform transition-all duration-300 flex flex-col justify-between"
           >
             {/* Neon glowing tab */}
-            <div className="absolute top-0 left-0 bg-yellow-600/20 text-yellow-400 font-mono px-4 py-1 rounded-br-2xl text-sm tracking-tight">
+            <div className="bg-yellow-600/30 text-yellow-400 font-mono px-4 py-1 rounded-tl-2xl rounded-tr-2xl text-md tracking-tight">
               {project.name}
             </div>
 
             {/* Project description */}
-            <div className="mt-6 flex-1">
+            <div className="mx-6 mt-6 flex-1">
               <p className="text-gray-300 mb-4 font-mono">{project.desc}</p>
 
               {/* Tech pills */}
-              <div className="flex flex-wrap justify-center gap-2">
+              <div className="mx-6 flex flex-wrap justify-center gap-2">
                 {project.tech.map((tech) => (
                   <span
                     key={tech}
@@ -78,7 +78,7 @@ export default function Projects() {
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-6 inline-block px-4 py-2 border border-yellow-600 text-yellow-400 font-mono rounded-xl hover:bg-yellow-400 hover:text-black transition-colors"
+              className="mx-6 mt-6 inline-block px-4 py-2 border border-yellow-600 text-yellow-400 font-mono rounded-xl hover:bg-yellow-400 hover:text-black transition-colors"
             >
               View Project
             </a>
@@ -94,7 +94,7 @@ export default function Projects() {
         className="mt-8"
       >
         <Link
-          to="/projects"
+          to="/projects#all-projects"
           className="px-6 py-3 border border-yellow-600 text-yellow-400 font-mono rounded-xl hover:bg-yellow-400 hover:text-black transition-colors shadow-[0_0_15px_rgba(255,255,0,0.2)]"
         >
           View All Projects →
