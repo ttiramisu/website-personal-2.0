@@ -1,12 +1,13 @@
-import { projects } from "../data/projectsData";
-import { motion } from "framer-motion";
-
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { motion } from "framer-motion";
+import { projects } from "../data/projectsData";
 
 export default function AllProjects() {
   const location = useLocation();
+  const [filter, setFilter] = useState<string>("All");
 
+  // Scroll to anchor if present
   useEffect(() => {
     if (location.hash) {
       const id = location.hash.replace("#", "");
@@ -16,6 +17,12 @@ export default function AllProjects() {
       }
     }
   }, [location]);
+
+  // Apply filter
+  const filteredProjects =
+    filter === "All" ? projects : projects.filter((p) => p.type === filter);
+
+  const filters = ["All", "Python", "Application", "Web", "Publicity"];
 
   return (
     <section
@@ -42,7 +49,7 @@ export default function AllProjects() {
         All Projects
       </motion.h2>
 
-      {/* Terminal-style tagline */}
+      {/* Tagline */}
       <motion.p
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -54,6 +61,28 @@ export default function AllProjects() {
         <span className="blinking-cursor text-yellow-400"> |</span>
       </motion.p>
 
+      {/* Filter Buttons */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="flex justify-center gap-3 mb-8 flex-wrap"
+      >
+        {filters.map((f) => (
+          <button
+            key={f}
+            onClick={() => setFilter(f)}
+            className={`cursor-pointer px-4 py-2 rounded-full border transition-colors duration-200 ${
+              filter === f
+                ? "bg-yellow-400 text-black border-yellow-400"
+                : "bg-transparent text-yellow-400 border-yellow-600 hover:bg-yellow-400 hover:text-black"
+            }`}
+          >
+            {f}
+          </button>
+        ))}
+      </motion.div>
+
       {/* Projects Grid */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -61,14 +90,17 @@ export default function AllProjects() {
         transition={{ duration: 0.9 }}
         className="grid sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-6xl w-full"
       >
-        {projects.map((project) => (
-          <motion.div className="bg-black/80 pb-6 rounded-2xl border border-yellow-600/20 shadow-[0_0_15px_rgba(255,255,0,0.1)] hover:shadow-[0_0_25px_rgba(255,255,0,0.4)] transform transition-all duration-300 flex flex-col justify-between">
+        {filteredProjects.map((project) => (
+          <motion.div
+            key={project.name}
+            className="bg-black/80 pb-6 rounded-2xl border border-yellow-600/20 shadow-[0_0_15px_rgba(255,255,0,0.1)] hover:shadow-[0_0_25px_rgba(255,255,0,0.4)] transform transition-all duration-300 flex flex-col justify-between"
+          >
             {/* Neon glowing tab */}
             <div className="bg-yellow-600/30 text-yellow-400 font-mono px-4 py-1 rounded-tl-2xl rounded-tr-2xl text-md tracking-tight">
               {project.name}
             </div>
 
-            {/* Project description */}
+            {/* Description */}
             <div className="mx-6 mt-6 flex-1">
               <p className="text-gray-300 mb-4 font-mono">{project.desc}</p>
 
@@ -92,7 +124,7 @@ export default function AllProjects() {
               rel="noopener noreferrer"
               className="mx-6 mt-6 inline-block px-4 py-2 border border-yellow-600 text-yellow-400 font-mono rounded-xl hover:bg-yellow-400 hover:text-black transition-colors"
             >
-              View Project
+              View Project &rarr;
             </a>
           </motion.div>
         ))}
@@ -107,10 +139,7 @@ export default function AllProjects() {
       >
         <a
           onClick={() => {
-            // Go back to home page
             window.location.href = "/#projects";
-
-            // After navigating, wait for the DOM to render, then scroll smoothly
             setTimeout(() => {
               const section = document.querySelector("#projects");
               if (section) {
