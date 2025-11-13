@@ -43,10 +43,13 @@ export default function About() {
       >
         <span className="text-yellow-400">~$</span>{" "}
         <span>
-          Hi, I’m Jin Zijie — a passionate software developer with a love for
-          building modern web applications and exploring new technologies. I
-          enjoy solving complex problems, learning continuously, and creating
-          projects that make a difference.
+          Hi, I’m Jin Zijie — a driven and innovative secondary school student
+          with a passion for web development and design. Skilled in creating
+          intuitive, visually appealing websites that seamlessly blend
+          functionality with creativity. A proactive learner and collaborative
+          thinker, I enjoy exploring emerging technologies, tackling challenging
+          problems, and designing digital and physical experiences that leave a meaningful
+          impact.
         </span>
         <span className="blinking-cursor text-yellow-400">|</span>
       </motion.p>
