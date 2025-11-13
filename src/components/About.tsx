@@ -46,7 +46,7 @@ export default function About() {
           Hi, I’m Jin Zijie — a driven and innovative secondary school student
           with a passion for web development and design. Skilled in creating
           intuitive, visually appealing websites that seamlessly blend
-          functionality with creativity. A proactive learner and collaborative
+          functionality with creativity. As a proactive learner and collaborative
           thinker, I enjoy exploring emerging technologies, tackling challenging
           problems, and designing digital and physical experiences that leave a meaningful
           impact.
