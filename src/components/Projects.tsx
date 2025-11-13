@@ -74,14 +74,13 @@ export default function Projects() {
             </div>
 
             {/* View Project button */}
-            <a
-              href={project.link}
-              target="_blank"
+            <Link
+              to={`/projects/${encodeURIComponent(project.name)}`}
               rel="noopener noreferrer"
               className="mx-6 mt-6 inline-block px-4 py-2 border border-yellow-600 text-yellow-400 font-mono rounded-xl hover:bg-yellow-400 hover:text-black transition-colors"
             >
               View Project
-            </a>
+            </Link>
           </motion.div>
         ))}
       </div>

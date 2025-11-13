@@ -22,7 +22,7 @@ function App() {
         const sectionTop =
           section.getBoundingClientRect().top + window.pageYOffset;
         window.scrollTo({
-          top: sectionTop - navHeight - 10, // add some extra padding if you want
+          top: sectionTop - navHeight - 10,
           behavior: "smooth",
         });
       }

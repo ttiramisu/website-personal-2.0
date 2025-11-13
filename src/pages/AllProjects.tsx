@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { projects } from "../data/projectsData";
+
 
 export default function AllProjects() {
   const location = useLocation();
@@ -93,6 +94,7 @@ export default function AllProjects() {
         {filteredProjects.map((project) => (
           <motion.div
             key={project.name}
+            id={project.name.replace(/\s/g, "")}
             className="bg-black/80 pb-6 rounded-2xl border border-yellow-600/20 shadow-[0_0_15px_rgba(255,255,0,0.1)] hover:shadow-[0_0_25px_rgba(255,255,0,0.4)] transform transition-all duration-300 flex flex-col justify-between"
           >
             {/* Neon glowing tab */}
@@ -118,14 +120,13 @@ export default function AllProjects() {
             </div>
 
             {/* View Project button */}
-            <a
-              href={project.link}
-              target="_blank"
+            <Link
+              to={`/projects/${encodeURIComponent(project.name)}#${project.name.replace(/\s/g, "-")}`}
               rel="noopener noreferrer"
               className="mx-6 mt-6 inline-block px-4 py-2 border border-yellow-600 text-yellow-400 font-mono rounded-xl hover:bg-yellow-400 hover:text-black transition-colors"
             >
-              View Project &rarr;
-            </a>
+              View Project
+            </Link>
           </motion.div>
         ))}
       </motion.div>
@@ -137,20 +138,12 @@ export default function AllProjects() {
         transition={{ duration: 1.1 }}
         className="mt-8"
       >
-        <a
-          onClick={() => {
-            window.location.href = "/#projects";
-            setTimeout(() => {
-              const section = document.querySelector("#projects");
-              if (section) {
-                section.scrollIntoView({ behavior: "smooth" });
-              }
-            }, 300);
-          }}
+        <Link
+          to="/#projects"
           className="px-6 py-3 border border-yellow-600 text-yellow-400 font-mono rounded-xl hover:bg-yellow-400 hover:text-black transition-colors cursor-pointer"
         >
-          ← Back to Projects
-        </a>
+          ← Back
+        </Link>
       </motion.div>
 
       {/* Accent underline */}

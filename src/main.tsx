@@ -2,6 +2,7 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AllProjects from "./pages/AllProjects";
+import ProjectDetail from "./pages/ProjectDetails";
 import "./index.css";
 import App from "./App.tsx";
 
@@ -16,6 +17,7 @@ createRoot(container).render(
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/projects" element={<AllProjects />} />
+        <Route path="/projects/:projectName" element={<ProjectDetail />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>
