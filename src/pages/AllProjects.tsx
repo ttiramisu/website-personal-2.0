@@ -22,7 +22,7 @@ export default function AllProjects() {
   const filteredProjects =
     filter === "All" ? projects : projects.filter((p) => p.type === filter);
 
-  const filters = ["All", "Python", "Application", "Web", "Publicity"];
+  const filters = ["All", "Python", "Applications", "Websites", "Publicity"];
 
   return (
     <section
@@ -72,7 +72,7 @@ export default function AllProjects() {
           <button
             key={f}
             onClick={() => setFilter(f)}
-            className={`cursor-pointer px-4 py-2 rounded-full border transition-colors duration-200 ${
+            className={`cursor-pointer px-4 py-2 rounded-xl border transition-colors duration-200 ${
               filter === f
                 ? "bg-yellow-400 text-black border-yellow-400"
                 : "bg-transparent text-yellow-400 border-yellow-600 hover:bg-yellow-400 hover:text-black"
@@ -96,12 +96,12 @@ export default function AllProjects() {
             className="bg-black/80 pb-6 rounded-2xl border border-yellow-600/20 shadow-[0_0_15px_rgba(255,255,0,0.1)] hover:shadow-[0_0_25px_rgba(255,255,0,0.4)] transform transition-all duration-300 flex flex-col justify-between"
           >
             {/* Neon glowing tab */}
-            <div className="bg-yellow-600/30 text-yellow-400 font-mono px-4 py-1 rounded-tl-2xl rounded-tr-2xl text-md tracking-tight">
+            <div className="bg-yellow-600/30 text-yellow-400 font-mono px-4 py-1 rounded-tl-2xl rounded-tr-2xl text-lg tracking-tight">
               {project.name}
             </div>
 
             {/* Description */}
-            <div className="mx-6 mt-6 flex-1">
+            <div className="mx-6 mt-6 flex-1 flex flex-col justify-between">
               <p className="text-gray-300 mb-4 font-mono">{project.desc}</p>
 
               {/* Tech pills */}

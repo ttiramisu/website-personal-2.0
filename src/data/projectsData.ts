@@ -4,6 +4,9 @@ export interface Project {
   tech: string[];
   link: string;
   type?: string;
+  w_overview?: string;
+  w_chall?: string;
+  w_learn?: string;
 }
 
 export const projects: Project[] = [
@@ -23,45 +26,45 @@ export const projects: Project[] = [
   },
   {
     name: "Homework Tracker",
-    desc: "A simple desktop homework tracker application to track homeworks and deadlines",
+    desc: "A simple desktop homework tracker application to track deadlines",
     tech: ["Electron", "HTML", "CSS", "JavaScript"],
     link: "https://github.com/ttiramisu/hw-tracker",
-    type: "Application",
+    type: "Applications",
   },
   {
     name: "Music Player",
     desc: "A simple Android music player that plays local music files",
     tech: ["Expo", "React Native", "TypeScript"],
     link: "https://github.com/ttiramisu/music-player",
-    type: "Application",
+    type: "Applications",
   },
   {
     name: "AYCF Website 2025",
     desc: "Website for Asian Youth Chinese Forum 2025",
     tech: ["HTML", "CSS", "JavaScript", "Bootstrap"],
     link: "https://github.com/Summerflake/AYCF-WEBSITE-2025",
-    type: "Web",
+    type: "Websites",
   },
   {
     name: "Winterflake",
     desc: "Website for the Winterflake CTF team",
     tech: ["React", "Vite", "TypeScript"],
     link: "https://github.com/ttiramisu/winterflake",
-    type: "Web",
+    type: "Websites",
   },
   {
     name: "Silkroad 2023",
     desc: "A multi-paged website that shows the history of the silkroad",
     tech: ["Python", "Flask", "Bootstrap"],
     link: "https://github.com/ttiramisu/website-2023",
-    type: "Web",
+    type: "Websites",
   },
   {
     name: "Fire Chat",
     desc: "A sketchy real-time chatting application (pls do not hack)",
     tech: ["HTML", "CSS", "JavaScript", "Firebase"],
     link: "https://github.com/ttiramisu/online-chat",
-    type: "Web",
+    type: "Websites",
   },
   {
     name: "CNY 2025 Publicity",
