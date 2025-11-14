@@ -39,7 +39,7 @@ export default function ProjectDetail() {
         transition={{ duration: 0.6 }}
         className="text-sm md:text-base text-yellow-400 font-mono mb-3 tracking-tight"
       >
-        ttiramisu@ttiramisu:/mnt/projects/all-projects/{project.name}
+        ttiramisu@ttiramisu:/mnt/personal/projects/all-projects/{project.name}
       </motion.p>
 
       {/* Project heading */}

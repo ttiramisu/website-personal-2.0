@@ -73,7 +73,7 @@ export default function Navigation() {
           <span className="w-2 h-2 rounded-full bg-green-500/80 shadow-[0_0_4px_rgba(0,255,0,0.6)]"></span>
         </div>
         <span className="tracking-tight text-xs">
-          <span className="font-bold">ttiramisu@ttiramisu</span>:/mnt/website
+          <span className="font-bold">ttiramisu@ttiramisu</span>:/mnt/personal
         </span>
       </div>
 

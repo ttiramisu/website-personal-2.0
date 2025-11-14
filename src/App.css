@@ -43,3 +43,7 @@ html {
 * {
   font-family: 'Cascadia Code', monospace;
 }
+
+.im-too-lazy-to-think-of-a-class-name {
+  scroll-margin-top: 60px;
+}

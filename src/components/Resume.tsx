@@ -13,7 +13,7 @@ export default function Resume() {
         transition={{ duration: 0.6 }}
         className="text-sm md:text-base text-yellow-400 font-mono mb-3 tracking-tight"
       >
-        ttiramisu@ttiramisu:/mnt/resume
+        ttiramisu@ttiramisu:/mnt/personal/resume
       </motion.p>
 
       {/* Section heading */}

@@ -3,6 +3,8 @@ import { useLocation, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { projects } from "../data/projectsData";
 
+import '../App.css'
+
 
 export default function AllProjects() {
   const location = useLocation();
@@ -37,7 +39,7 @@ export default function AllProjects() {
         transition={{ duration: 0.6 }}
         className="text-sm md:text-base text-yellow-400 font-mono mb-3 tracking-tight"
       >
-        ttiramisu@ttiramisu:/mnt/projects/all-projects
+        ttiramisu@ttiramisu:/mnt/personal/projects/all-projects
       </motion.p>
 
       {/* Section heading */}
@@ -95,7 +97,7 @@ export default function AllProjects() {
           <motion.div
             key={project.name}
             id={project.name.replace(/\s/g, "")}
-            className="bg-black/80 pb-6 rounded-2xl border border-yellow-600/20 shadow-[0_0_15px_rgba(255,255,0,0.1)] hover:shadow-[0_0_25px_rgba(255,255,0,0.4)] transform transition-all duration-300 flex flex-col justify-between"
+            className="im-too-lazy-to-think-of-a-class-name bg-black/80 pb-6 rounded-2xl border border-yellow-600/20 shadow-[0_0_15px_rgba(255,255,0,0.1)] hover:shadow-[0_0_25px_rgba(255,255,0,0.4)] transform transition-all duration-300 flex flex-col justify-between"
           >
             {/* Neon glowing tab */}
             <div className="bg-yellow-600/30 text-yellow-400 font-mono px-4 py-1 rounded-tl-2xl rounded-tr-2xl text-lg tracking-tight">
