@@ -43,7 +43,7 @@ export default function About() {
       >
         <span className="text-yellow-400">~$</span>{" "}
         <span>
-          Hi, I’m Jin Zijie — a driven and innovative secondary school student
+          Hi, I’m Jin Zijie — a driven and innovative student
           with a passion for web development and design. Skilled in creating
           intuitive, visually appealing websites that seamlessly blend
           functionality with creativity. As a proactive learner and collaborative
