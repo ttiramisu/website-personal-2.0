@@ -30,7 +30,7 @@ export default function AllProjects() {
   return (
     <section
       id="all-projects"
-      className="pt-6 min-h-screen flex flex-col justify-center items-center text-center px-5 bg-gradient-to-b from-black/90 via-black/90 to-black/90 select-none"
+      className="pt-30 min-h-screen flex flex-col justify-center items-center text-center px-5 bg-gradient-to-b from-black/90 via-black/90 to-black/90 select-none"
     >
       {/* Terminal-style path */}
       <motion.p

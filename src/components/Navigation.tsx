@@ -1,71 +1,78 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { useNavigate, useLocation } from "react-router-dom";
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const navItems = ["About", "Education", "Projects", "Resume"];
 
-  // Smooth scroll handler
-  const handleScroll = (id: string) => {
-    const element = document.getElementById(id);
-    if (!element) return;
+  const scrollToSection = (id: string) => {
+    const el = document.getElementById(id);
+    if (!el) return;
 
-    // Navbar height to offset
     const navHeight = document.querySelector("nav")?.clientHeight || 0;
+    const y =
+      el.getBoundingClientRect().top + window.scrollY - navHeight;
 
-    const elementPosition = element.getBoundingClientRect().top + window.scrollY;
-    const offsetPosition = elementPosition - navHeight;
+    window.scrollTo({ top: y, behavior: "smooth" });
 
-    window.scrollTo({
-      top: offsetPosition,
-      behavior: "smooth",
-    });
+    // 🔑 update hash WITHOUT reload
+    window.history.replaceState(null, "", `/#${id}`);
+  };
+
+  const handleNavClick = (id: string) => {
     setIsOpen(false);
+
+    if (location.pathname !== "/") {
+      navigate(`/#${id}`);
+      return;
+    }
+
+    scrollToSection(id);
   };
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 bg-black/92 border-b border-yellow-600/30 backdrop-blur-md font-mono text-yellow-400 shadow-[0_0_10px_rgba(255,255,0,0.15)]">
-      <div className="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between">
+    <nav className="fixed top-0 left-0 w-full z-50 bg-black/92 border-b border-yellow-600/30 font-mono text-yellow-400">
+      <div className="max-w-6xl mx-auto px-6 py-3 flex justify-between items-center">
         <a
-          href="#home"
-          className="text-lg md:text-xl font-bold tracking-tight hover:text-yellow-300 transition-colors"
+          href="/#home"
           onClick={(e) => {
             e.preventDefault();
-            handleScroll("home");
+            handleNavClick("home");
           }}
+          className="font-bold text-lg"
         >
           ttiramisu
         </a>
 
-        {/* Desktop nav links */}
-        <ul className="hidden md:flex space-x-8 text-sm font-medium">
+        <ul className="hidden md:flex space-x-8 text-sm">
           {navItems.map((item) => (
             <li key={item}>
               <a
-                href={`#${item.toLowerCase()}`}
+                href={`/#${item.toLowerCase()}`}
                 onClick={(e) => {
                   e.preventDefault();
-                  handleScroll(item.toLowerCase());
+                  handleNavClick(item.toLowerCase());
                 }}
-                className="relative group hover:text-yellow-300 transition-colors"
+                className="hover:text-yellow-300"
               >
-                <span className="select-none">$</span> {item.toLowerCase()}
-                <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-yellow-400 transition-all duration-300 group-hover:w-full"></span>
+                $ {item.toLowerCase()}
               </a>
             </li>
           ))}
         </ul>
 
-        {/* Mobile toggle */}
         <button
+          className="md:hidden"
           onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden text-yellow-400 hover:text-yellow-300 transition-colors"
         >
           {isOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
 
-      {/* Terminal path below nav */}
       <div className="max-w-6xl mx-auto px-6 py-2 text-sm text-yellow-400 font-mono border-t border-yellow-600/20 flex items-center space-x-2">
         <div className="flex space-x-1.5">
           <span className="w-2 h-2 rounded-full bg-red-500/80 shadow-[0_0_4px_rgba(255,0,0,0.6)]"></span>
@@ -77,18 +84,17 @@ export default function Navigation() {
         </span>
       </div>
 
-      {/* Mobile dropdown */}
       {isOpen && (
-        <ul className="md:hidden flex flex-col space-y-2 px-6 py-4 text-sm border-t border-yellow-600/20 bg-black/95 animate-slideDown">
+        <ul className="md:hidden px-6 py-4 space-y-3 bg-black border-t border-yellow-600/20">
           {navItems.map((item) => (
             <li key={item}>
               <a
-                href={`#${item.toLowerCase()}`}
+                href={`/#${item.toLowerCase()}`}
                 onClick={(e) => {
                   e.preventDefault();
-                  handleScroll(item.toLowerCase());
+                  handleNavClick(item.toLowerCase());
                 }}
-                className="block hover:text-yellow-300 transition-colors"
+                className="block hover:text-yellow-300"
               >
                 $ {item.toLowerCase()}
               </a>

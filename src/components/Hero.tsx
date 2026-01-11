@@ -66,7 +66,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex flex-col justify-center items-center text-center px-5 bg-gradient-to-b from-black via-black/90 to-black/90 select-none overflow-hidden"
+      className="pt-20 relative min-h-screen flex flex-col justify-center items-center text-center px-5 bg-gradient-to-b from-black via-black/90 to-black/90 select-none overflow-hidden"
     >
       {/* Terminal-style path line */}
       <motion.p

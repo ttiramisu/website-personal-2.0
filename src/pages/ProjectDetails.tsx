@@ -11,7 +11,7 @@ export default function ProjectDetail() {
 
   if (!project)
     return (
-      <section className="min-h-screen flex justify-center items-center bg-black/90 text-gray-100">
+      <section className="pt-30 min-h-screen flex justify-center items-center bg-black/90 text-gray-100">
         <p className="text-center text-xl font-mono">Project not found.</p>
       </section>
     );
@@ -30,7 +30,7 @@ export default function ProjectDetail() {
   return (
     <section
       id={project.name.replace(/\s/g, "-")}
-      className="pt-6 flex flex-col justify-center items-center text-center px-5 bg-gradient-to-b from-black/90 via-black/90 to-black/90 select-none"
+      className="pt-30 flex flex-col justify-center items-center text-center px-5 bg-gradient-to-b from-black/90 via-black/90 to-black/90 select-none"
     >
       {/* Terminal-style path */}
       <motion.p
