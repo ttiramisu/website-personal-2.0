@@ -11,6 +11,19 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    name: "Polling Site",
+    desc: "A web application for polling that uses Google Sheets as the database",
+    tech: ["HTML", "CSS", "JavaScript", "Google Apps Script"],
+    link: "https://github.com/ttiramisu/poll-site-with-google-sheets",
+    type: "Websites",
+    w_overview:
+      "Polling Site is a web application that allows users to create and participate in polls, with all data stored and managed through Google Sheets via Google Apps Script.",
+    w_chall:
+      "The main challenge was integrating Google Sheets as a backend database while ensuring real-time updates and data integrity. The fact that all the pollers have to pull from one single data source to update and edit the data in the Google Sheets made it even harder. This required me to think through the logic of how the data is being stored and retrieved.",
+    w_learn:
+      "This project taught me about serverless architecture, working with third-party APIs, and handling asynchronous data operations in web applications.",
+  },
+  {
     name: "sharky",
     desc: "A dynamic content-driven web project with customisable content",
     tech: ["Python", "YAML"],
