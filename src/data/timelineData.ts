@@ -13,9 +13,15 @@ export const timelineData: TimelineItem[] = [
     school: "Xingnan Primary School",
   },
   {
-    year: "2022 - present",
+    year: "2022 - 2025",
     duration: "4 years",
     title: "Secondary School Student",
     school: "Hwa Chong Institution",
   },
+  {
+    year: "2026 - Present",
+    duration: "Ongoing",
+    title: "Junior College Student",
+    school: "Hwa Chong Institution",
+  }
 ];
