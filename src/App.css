@@ -32,8 +32,8 @@
   }
 }
 
-#education {
-  height: 86px;
+[id] {
+  scroll-margin-top: 120px;
 }
 
 html {

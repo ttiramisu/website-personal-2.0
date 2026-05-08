@@ -1,6 +1,7 @@
 import { projects } from "../data/projectsData";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { projectSlug } from "../utils/projectSlug";
 
 export default function Projects() {
   const topProjects = projects.slice(0, 3);
@@ -75,8 +76,7 @@ export default function Projects() {
 
             {/* View Project button */}
             <Link
-              to={`/projects/${encodeURIComponent(project.name)}#${project.name.replace(/\s/g, "")}`}
-              rel="noopener noreferrer"
+              to={`/projects/${encodeURIComponent(project.name)}#${projectSlug(project.name)}`}
               className="mx-6 mt-6 inline-block px-4 py-2 border border-yellow-600 text-yellow-400 font-mono rounded-xl hover:bg-yellow-400 hover:text-black transition-colors"
             >
               View Project

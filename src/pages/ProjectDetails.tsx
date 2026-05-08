@@ -1,20 +1,15 @@
 import { useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { projects } from "../data/projectsData";
+import { projectSlug } from "../utils/projectSlug";
 
 export default function ProjectDetail() {
   const { projectName } = useParams<{ projectName: string }>();
+  const location = useLocation();
   const project = projects.find(
     (p) => p.name === decodeURIComponent(projectName!)
   );
-
-  if (!project)
-    return (
-      <section className="pt-30 min-h-screen flex justify-center items-center bg-black/90 text-gray-100">
-        <p className="text-center text-xl font-mono">Project not found.</p>
-      </section>
-    );
 
   // Scroll to anchor if present
   useEffect(() => {
@@ -25,11 +20,18 @@ export default function ProjectDetail() {
         el.scrollIntoView({ behavior: "smooth" });
       }
     }
-  }, [location]);
+  }, [location.hash]);
+
+  if (!project)
+    return (
+      <section className="pt-30 min-h-screen flex justify-center items-center bg-black/90 text-gray-100">
+        <p className="text-center text-xl font-mono">Project not found.</p>
+      </section>
+    );
 
   return (
     <section
-      id={project.name.replace(/\s/g, "-")}
+      id={projectSlug(project.name)}
       className="pt-30 flex flex-col justify-center items-center text-center px-5 bg-gradient-to-b from-black/90 via-black/90 to-black/90 select-none"
     >
       {/* Terminal-style path */}
@@ -137,7 +139,7 @@ export default function ProjectDetail() {
         className="mt-6"
       >
         <Link
-          to={`/projects#${project.name.replace(/\s/g, "")}`}
+          to={`/projects#${projectSlug(project.name)}`}
           className="text-yellow-400 font-mono hover:underline"
         >
           ← Back to Projects

@@ -1,6 +1,17 @@
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { useState, useEffect } from "react";
 
+interface GithubPushEvent {
+  type: "PushEvent";
+  repo: { name: string };
+  created_at: string;
+  payload: { commits?: Array<{ message?: string }> };
+}
+
+interface GithubPublicEvent {
+  type: string;
+}
+
 export default function Hero() {
   const [isHovered, setIsHovered] = useState(false);
   const [commitInfo, setCommitInfo] = useState<{
@@ -22,9 +33,15 @@ export default function Hero() {
         const res = await fetch(
           "https://api.github.com/users/ttiramisu/events/public"
         );
-        const events = await res.json();
+        if (!res.ok) return;
 
-        const pushEvent = events.find((e: any) => e.type === "PushEvent");
+        const events = await res.json();
+        if (!Array.isArray(events)) return;
+
+        const pushEvent = (events as GithubPublicEvent[]).find(
+          (e): e is GithubPushEvent => e.type === "PushEvent"
+        );
+
         if (pushEvent) {
           const repoName = pushEvent.repo.name;
           const commitMsg =
@@ -34,10 +51,11 @@ export default function Hero() {
 
           setCommitInfo({ repo: repoName, message: commitMsg, timeAgo });
         }
-      } catch (err) {
-        console.error("Failed to fetch GitHub events", err);
+      } catch (error) {
+        console.error("Failed to fetch GitHub events", error);
       }
     }
+
     fetchLatestPush();
   }, []);
 

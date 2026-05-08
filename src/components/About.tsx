@@ -3,10 +3,10 @@ import { motion } from "framer-motion";
 
 export default function About() {
   const contactLinks = [
-    { href: "mailto:ttiramisu10@gmail.com", icon: Mail },
-    { href: "https://www.linkedin.com/in/jin-zijie", icon: Linkedin },
-    { href: "https://github.com/ttiramisu", icon: Github },
-    { href: "https://www.instagram.com/caketoll", icon: Instagram },
+    { href: "mailto:ttiramisu10@gmail.com", icon: Mail, label: "Email" },
+    { href: "https://www.linkedin.com/in/jin-zijie", icon: Linkedin, label: "LinkedIn" },
+    { href: "https://github.com/ttiramisu", icon: Github, label: "GitHub" },
+    { href: "https://www.instagram.com/caketoll", icon: Instagram, label: "Instagram" },
   ];
 
   return (
@@ -64,13 +64,14 @@ export default function About() {
         {contactLinks.map((item, idx) => {
           const Icon = item.icon;
           return (
-            <a
-              key={idx}
-              href={item.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-yellow-400 hover:text-yellow-300 transform transition duration-300 ease-in-out hover:scale-110 hover:-translate-y-1"
-            >
+              <a
+                key={idx}
+                href={item.href}
+                target={item.href.startsWith("http") ? "_blank" : undefined}
+                rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                aria-label={item.label}
+                className="text-yellow-400 hover:text-yellow-300 transform transition duration-300 ease-in-out hover:scale-110 hover:-translate-y-1"
+              >
               <Icon size={28} />
             </a>
           );

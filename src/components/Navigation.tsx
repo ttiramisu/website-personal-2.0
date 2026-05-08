@@ -68,6 +68,9 @@ export default function Navigation() {
         <button
           className="md:hidden"
           onClick={() => setIsOpen(!isOpen)}
+          aria-expanded={isOpen}
+          aria-controls="mobile-nav"
+          aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
         >
           {isOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
@@ -85,7 +88,10 @@ export default function Navigation() {
       </div>
 
       {isOpen && (
-        <ul className="md:hidden px-6 py-4 space-y-3 bg-black border-t border-yellow-600/20">
+        <ul
+          id="mobile-nav"
+          className="md:hidden px-6 py-4 space-y-3 bg-black border-t border-yellow-600/20"
+        >
           {navItems.map((item) => (
             <li key={item}>
               <a

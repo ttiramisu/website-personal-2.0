@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useLocation, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { projects } from "../data/projectsData";
+import { projectSlug } from "../utils/projectSlug";
 
 import '../App.css'
 
@@ -19,7 +20,7 @@ export default function AllProjects() {
         el.scrollIntoView({ behavior: "smooth" });
       }
     }
-  }, [location]);
+  }, [location.hash]);
 
   // Apply filter
   const filteredProjects =
@@ -96,7 +97,7 @@ export default function AllProjects() {
         {filteredProjects.map((project) => (
           <motion.div
             key={project.name}
-            id={project.name.replace(/\s/g, "")}
+            id={projectSlug(project.name)}
             className="im-too-lazy-to-think-of-a-class-name bg-black/80 pb-6 rounded-2xl border border-yellow-600/20 shadow-[0_0_15px_rgba(255,255,0,0.1)] hover:shadow-[0_0_25px_rgba(255,255,0,0.4)] transform transition-all duration-300 flex flex-col justify-between"
           >
             {/* Neon glowing tab */}
@@ -123,8 +124,7 @@ export default function AllProjects() {
 
             {/* View Project button */}
             <Link
-              to={`/projects/${encodeURIComponent(project.name)}#${project.name.replace(/\s/g, "-")}`}
-              rel="noopener noreferrer"
+              to={`/projects/${encodeURIComponent(project.name)}#${projectSlug(project.name)}`}
               className="mx-6 mt-6 inline-block px-4 py-2 border border-yellow-600 text-yellow-400 font-mono rounded-xl hover:bg-yellow-400 hover:text-black transition-colors"
             >
               View Project
