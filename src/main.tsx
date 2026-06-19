@@ -5,8 +5,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import App from "./App";
 import AllProjects from "./pages/AllProjects";
 import ProjectDetail from "./pages/ProjectDetails";
-import AllWriteups from "./pages/AllWriteups";
-import WriteupDetails from "./pages/WriteupDetails";
+// import AllWriteups from "./pages/AllWriteups";
+// import WriteupDetails from "./pages/WriteupDetails";
 import Layout from "./layout/layout";
 
 import "./index.css";
