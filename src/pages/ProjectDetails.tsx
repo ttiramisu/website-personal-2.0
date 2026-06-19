@@ -24,135 +24,105 @@ export default function ProjectDetail() {
 
   if (!project)
     return (
-      <section className="pt-30 min-h-screen flex justify-center items-center bg-black/90 text-gray-100">
-        <p className="text-center text-xl font-mono">Project not found.</p>
+      <section className="section-shell min-h-screen">
+        <div className="section-inner flex min-h-[50vh] items-center justify-center">
+          <p className="text-center text-lg text-slate-600">Project not found.</p>
+        </div>
       </section>
     );
 
   return (
-    <section
-      id={projectSlug(project.name)}
-      className="pt-30 flex flex-col justify-center items-center text-center px-5 bg-gradient-to-b from-black/90 via-black/90 to-black/90 select-none"
-    >
-      {/* Terminal-style path */}
-      <motion.p
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="text-sm md:text-base text-yellow-400 font-mono mb-3 tracking-tight"
-      >
-        ttiramisu@ttiramisu:/mnt/personal/projects/all-projects/{project.name}
-      </motion.p>
-
-      {/* Project heading */}
-      <motion.h1
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7 }}
-        className="text-4xl md:text-5xl font-extrabold text-gray-100 mb-4 drop-shadow-[0_0_10px_rgba(255,255,0,0.4)] tracking-tight"
-      >
-        {project.name}
-      </motion.h1>
-
-      {/* Project description */}
-      <motion.p
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="text-lg md:text-xl text-gray-300 max-w-3xl font-mono mb-6"
-      >
-        {project.desc}
-      </motion.p>
-
-      {/* Tech Pills */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.9 }}
-        className="flex flex-wrap justify-center gap-2 mb-8"
-      >
-        {project.tech.map((t) => (
-          <span
-            key={t}
-            className="px-3 py-1 bg-yellow-600/20 text-yellow-300 text-xs font-mono rounded-full backdrop-blur-sm"
-          >
-            {t}
-          </span>
-        ))}
-      </motion.div>
-
-      {/* Writeups */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-        className="max-w-4xl text-left space-y-8"
-      >
-        {project.w_overview && (
-          <div>
-            <h2 className="text-2xl text-yellow-400 font-bold mb-2">
-              Overview
-            </h2>
-            <p className="text-gray-300 font-mono">{project.w_overview}</p>
-          </div>
-        )}
-
-        {project.w_chall && (
-          <div>
-            <h2 className="text-2xl text-yellow-400 font-bold mb-2">
-              Challenges
-            </h2>
-            <p className="text-gray-300 font-mono">{project.w_chall}</p>
-          </div>
-        )}
-
-        {project.w_learn && (
-          <div>
-            <h2 className="text-2xl text-yellow-400 font-bold mb-2">
-              Learnings & Outcomes
-            </h2>
-            <p className="text-gray-300 font-mono">{project.w_learn}</p>
-          </div>
-        )}
-      </motion.div>
-
-      {/* Visit project button */}
-      {project.link && (
-        <motion.a
-          href={project.link}
-          target="_blank"
-          rel="noopener noreferrer"
-          initial={{ opacity: 0, y: 20 }}
+    <section id={projectSlug(project.name)} className="section-shell">
+      <div className="section-inner">
+        <motion.span
+          initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.1 }}
-          className="mt-8 inline-block px-6 py-3 border border-yellow-600 text-yellow-400 font-mono rounded-xl hover:bg-yellow-400 hover:text-black transition-colors shadow-[0_0_15px_rgba(255,255,0,0.2)]"
+          transition={{ duration: 0.5 }}
+          className="section-kicker"
         >
-          Visit Project
-        </motion.a>
-      )}
+          Project detail
+        </motion.span>
 
-      {/* Back link */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.2 }}
-        className="mt-6"
-      >
-        <Link
-          to={`/projects#${projectSlug(project.name)}`}
-          className="text-yellow-400 font-mono hover:underline"
+        <motion.h1
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.55 }}
+          className="section-title max-w-3xl"
         >
-          ← Back to Projects
-        </Link>
-      </motion.div>
+          {project.name}
+        </motion.h1>
 
-      {/* Accent underline */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.3 }}
-        className="mb-10 mt-10 w-24 h-[2px] bg-gradient-to-r from-transparent via-yellow-400 to-transparent rounded-full opacity-70"
-      ></motion.div>
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.55, delay: 0.05 }}
+          className="section-copy"
+        >
+          {project.desc}
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.55, delay: 0.08 }}
+          className="mt-8 flex flex-wrap gap-2"
+        >
+          {project.tech.map((t) => (
+            <span key={t} className="chip">
+              {t}
+            </span>
+          ))}
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="mt-12 grid gap-6 lg:grid-cols-3"
+        >
+          {project.w_overview && (
+            <div className="soft-card rounded-[1.75rem] p-7 lg:col-span-3">
+              <h2 className="subtle-heading text-lg">Overview</h2>
+              <p className="section-copy mt-3 max-w-none">{project.w_overview}</p>
+            </div>
+          )}
+
+          {project.w_chall && (
+            <div className="soft-card rounded-[1.75rem] p-7 lg:col-span-1">
+              <h2 className="subtle-heading text-lg">Challenges</h2>
+              <p className="section-copy mt-3 max-w-none">{project.w_chall}</p>
+            </div>
+          )}
+
+          {project.w_learn && (
+            <div className="soft-card rounded-[1.75rem] p-7 lg:col-span-2">
+              <h2 className="subtle-heading text-lg">Learnings and outcomes</h2>
+              <p className="section-copy mt-3 max-w-none">{project.w_learn}</p>
+            </div>
+          )}
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.55, delay: 0.12 }}
+          className="mt-10 flex flex-wrap gap-3"
+        >
+          {project.link && (
+            <a
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="primary-button"
+            >
+              Visit project
+            </a>
+          )}
+          <Link to={`/projects#${projectSlug(project.name)}`} className="secondary-button">
+            Back to projects
+          </Link>
+        </motion.div>
+      </div>
     </section>
   );
 }

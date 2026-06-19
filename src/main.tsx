@@ -5,6 +5,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import App from "./App";
 import AllProjects from "./pages/AllProjects";
 import ProjectDetail from "./pages/ProjectDetails";
+import AllWriteups from "./pages/AllWriteups";
+import WriteupDetails from "./pages/WriteupDetails";
 import Layout from "./layout/layout";
 
 import "./index.css";
@@ -21,6 +23,8 @@ createRoot(container).render(
           <Route path="/" element={<App />} />
           <Route path="/projects" element={<AllProjects />} />
           <Route path="/projects/:projectName" element={<ProjectDetail />} />
+          {/* <Route path="/writeups" element={<AllWriteups />} /> */}
+          {/* <Route path="/writeups/:writeupSlug" element={<WriteupDetails />} /> */}
         </Route>
       </Routes>
     </BrowserRouter>

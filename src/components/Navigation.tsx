@@ -7,7 +7,13 @@ export default function Navigation() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const navItems = ["About", "Education", "Projects", "Resume"];
+  const navItems = [
+    { label: "About", id: "about" },
+    { label: "Education", id: "education" },
+    { label: "Projects", id: "projects" },
+    // { label: "Writeups", id: "writeups" },
+    { label: "Resume", id: "resume" },
+  ];
 
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id);
@@ -35,38 +41,38 @@ export default function Navigation() {
   };
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 bg-black/92 border-b border-yellow-600/30 font-mono text-yellow-400">
-      <div className="max-w-6xl mx-auto px-6 py-3 flex justify-between items-center">
+    <nav className="nav-shell fixed left-0 top-0 z-50 w-full text-slate-700">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <a
           href="/#home"
           onClick={(e) => {
             e.preventDefault();
             handleNavClick("home");
           }}
-          className="font-bold text-lg"
+          className="text-sm font-semibold tracking-[0.2em] text-slate-950 uppercase"
         >
           ttiramisu
         </a>
 
-        <ul className="hidden md:flex space-x-8 text-sm">
+        <ul className="hidden items-center gap-8 md:flex">
           {navItems.map((item) => (
-            <li key={item}>
+            <li key={item.id}>
               <a
-                href={`/#${item.toLowerCase()}`}
+                href={`/#${item.id}`}
                 onClick={(e) => {
                   e.preventDefault();
-                  handleNavClick(item.toLowerCase());
+                  handleNavClick(item.id);
                 }}
-                className="hover:text-yellow-300"
+                className="nav-link text-sm"
               >
-                $ {item.toLowerCase()}
+                {item.label}
               </a>
             </li>
           ))}
         </ul>
 
         <button
-          className="md:hidden"
+          className="md:hidden rounded-full border border-slate-200 bg-white/90 p-2 text-slate-700"
           onClick={() => setIsOpen(!isOpen)}
           aria-expanded={isOpen}
           aria-controls="mobile-nav"
@@ -76,33 +82,22 @@ export default function Navigation() {
         </button>
       </div>
 
-      <div className="max-w-6xl mx-auto px-6 py-2 text-sm text-yellow-400 font-mono border-t border-yellow-600/20 flex items-center space-x-2">
-        <div className="flex space-x-1.5">
-          <span className="w-2 h-2 rounded-full bg-red-500/80 shadow-[0_0_4px_rgba(255,0,0,0.6)]"></span>
-          <span className="w-2 h-2 rounded-full bg-yellow-400/80 shadow-[0_0_4px_rgba(255,255,0,0.6)]"></span>
-          <span className="w-2 h-2 rounded-full bg-green-500/80 shadow-[0_0_4px_rgba(0,255,0,0.6)]"></span>
-        </div>
-        <span className="tracking-tight text-xs">
-          <span className="font-bold">ttiramisu@ttiramisu</span>:/mnt/personal
-        </span>
-      </div>
-
       {isOpen && (
         <ul
           id="mobile-nav"
-          className="md:hidden px-6 py-4 space-y-3 bg-black border-t border-yellow-600/20"
+          className="border-t border-slate-200 bg-white/95 px-6 py-4 md:hidden"
         >
           {navItems.map((item) => (
-            <li key={item}>
+            <li key={item.id}>
               <a
-                href={`/#${item.toLowerCase()}`}
+                href={`/#${item.id}`}
                 onClick={(e) => {
                   e.preventDefault();
-                  handleNavClick(item.toLowerCase());
+                  handleNavClick(item.id);
                 }}
-                className="block hover:text-yellow-300"
+                className="block py-2 text-slate-700"
               >
-                $ {item.toLowerCase()}
+                {item.label}
               </a>
             </li>
           ))}

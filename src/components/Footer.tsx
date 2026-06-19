@@ -2,18 +2,16 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="w-full bg-black/90 text-yellow-400 font-mono px-6 py-8 select-none flex flex-col md:flex-row justify-between items-center border-t border-yellow-600/20">
-      {/* Left side */}
-      <div className="text-left mb-4 md:mb-0">
-        <p className="tracking-tight">ttiramisu</p>
-        <p className="text-gray-300 text-sm tracking-tight">
-          © {currentYear} Zijie. All rights reserved.
-        </p>
-      </div>
+    <footer className="border-t border-slate-200 bg-white/70 px-6 py-8 backdrop-blur">
+      <div className="mx-auto flex w-full max-w-6xl flex-col gap-3 md:flex-row md:items-center md:justify-between">
+        <div>
+          <p className="text-sm font-semibold text-slate-950">ttiramisu</p>
+          <p className="text-sm text-slate-500">© {currentYear} Zijie.</p>
+        </div>
 
-      {/* Right side */}
-      <div className="text-right text-sm tracking-tight">
-        Designed & Built with <span className="text-red-500">♥</span> using Vite
+        <p className="text-sm text-slate-500">
+          Designed and built with Vite, React, and a calmer aesthetic.
+        </p>
       </div>
     </footer>
   );

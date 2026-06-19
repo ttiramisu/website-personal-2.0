@@ -1,4 +1,5 @@
 import { motion, useMotionValue, useSpring } from "framer-motion";
+import { ArrowRight, Sparkles } from "lucide-react";
 import { useState, useEffect } from "react";
 
 interface GithubPushEvent {
@@ -84,96 +85,137 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="pt-20 relative min-h-screen flex flex-col justify-center items-center text-center px-5 bg-gradient-to-b from-black via-black/90 to-black/90 select-none overflow-hidden"
+      className="section-shell relative flex min-h-[calc(100vh-5rem)] items-center overflow-hidden pt-10 md:pt-16"
     >
-      {/* Terminal-style path line */}
-      <motion.p
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="text-sm md:text-base text-yellow-400 font-mono mb-3 tracking-tight"
-      >
-        ttiramisu@ttiramisu:/mnt/personal/home
-      </motion.p>
-
-      {/* Profile picture with hover */}
-      <motion.div
-        className="relative w-40 h-40 md:w-52 md:h-52 mb-6 cursor-pointer"
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-        onMouseMove={handleMouseMove}
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-      >
-        <img
-          src="me.jpg" // replace with your actual image
-          alt="Jin Zijie"
-          className="w-full h-full object-cover rounded-full border-2 border-yellow-400 transition-all duration-500 ease-in-out hover:scale-105 hover:shadow-[0_0_15px_rgba(255,255,0,0.3)] hover:drop-shadow-[0_0_20px_rgba(255,255,0,0.2)]"
-        />
-
-        {isHovered && commitInfo && (
-          <motion.div
-            style={{
-              position: "fixed",
-              left: springX,
-              top: springY,
-              pointerEvents: "none",
-              transform: "translateY(-50%)",
-            }}
-            initial={{ opacity: 0, x: 10, scale: 0.95 }}
-            animate={{ opacity: 1, x: 0, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.9 }}
-            transition={{ type: "spring", stiffness: 250, damping: 20 }}
-            className="bg-black/90 text-yellow-300 font-mono p-4 rounded-lg border border-yellow-600 shadow-2xl z-50 max-w-xs text-left"
+      <div className="section-inner grid items-center gap-10 lg:grid-cols-[1.15fr_0.85fr]">
+        <div>
+          <motion.span
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.45 }}
+            className="section-kicker"
           >
-            <p className="text-yellow-400 text-xs">Latest GitHub commit: </p>
-            <p>
-              <span className="text-yellow-400">$</span> {commitInfo.repo}
-            </p>
-            <p className="text-gray-300 text-sm truncate">
-              {commitInfo.message}
-            </p>
-            <p className="text-yellow-400 text-xs mt-2">
-              {commitInfo.timeAgo === "just now"
-                ? commitInfo.timeAgo
-                : `${commitInfo.timeAgo} ago`}
-            </p>
+            <Sparkles size={14} />
+            Design-first portfolio
+          </motion.span>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 22 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.05 }}
+            className="mt-6 max-w-3xl text-5xl font-semibold tracking-tight text-slate-950 md:text-7xl"
+          >
+            Jin Zijie
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.12 }}
+            className="section-copy max-w-2xl text-lg"
+          >
+            I build clean, thoughtful websites and digital experiences with a
+            focus on clarity, polish, and practical creativity.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 14 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.18 }}
+            className="mt-8 flex flex-wrap gap-3"
+          >
+            <a href="#projects" className="primary-button">
+              View featured work
+              <ArrowRight size={16} />
+            </a>
           </motion.div>
-        )}
-      </motion.div>
 
-      {/* Name */}
-      <motion.h1
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, delay: 0.1 }}
-        className="text-5xl md:text-7xl font-extrabold text-gray-100 mb-4 tracking-tight drop-shadow-[0_0_10px_rgba(255,255,0,0.4)]"
-      >
-        Jin&nbsp;Zijie
-      </motion.h1>
+          <motion.div
+            initial={{ opacity: 0, y: 14 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.24 }}
+            className="mt-10 flex flex-wrap gap-3"
+          >
+            {["Web development", "Product thinking", "Visual design"].map(
+              (item) => (
+                <span key={item} className="chip">
+                  {item}
+                </span>
+              )
+            )}
+          </motion.div>
+        </div>
 
-      {/* Terminal-style tagline */}
-      <motion.p
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.2 }}
-        className="text-lg md:text-xl text-gray-300 max-w-2xl font-mono"
-      >
-        <span className="text-yellow-400">~$</span>{" "}
-        <span className="inline-block">
-          Web Developer | Tech Enthusiast | Lifelong Learner
-        </span>
-        <span className="blinking-cursor text-yellow-400"> |</span>
-      </motion.p>
+        <motion.div
+          className="soft-card relative overflow-hidden rounded-[2rem] p-5 md:p-6"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+          onMouseMove={handleMouseMove}
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.65 }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-br from-white/70 via-white/25 to-indigo-50/70" />
+          <div className="relative">
+            <img
+              src="me.jpg"
+              alt="Jin Zijie"
+              className="aspect-square w-full rounded-[1.5rem] object-cover"
+            />
 
-      {/* Accent underline */}
-      <motion.div
-        initial={{ opacity: 0, scaleX: 0 }}
-        whileInView={{ opacity: 1, scaleX: 1 }}
-        transition={{ duration: 0.8, delay: 0.3 }}
-        className="mt-10 w-24 h-[2px] bg-gradient-to-r from-transparent via-yellow-400 to-transparent rounded-full opacity-70 origin-left"
-      ></motion.div>
+            {isHovered && commitInfo && (
+              <motion.div
+                style={{
+                  position: "fixed",
+                  left: springX,
+                  top: springY,
+                  pointerEvents: "none",
+                  transform: "translateY(-50%)",
+                }}
+                initial={{ opacity: 0, x: 10, scale: 0.96 }}
+                animate={{ opacity: 1, x: 0, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.92 }}
+                transition={{ type: "spring", stiffness: 260, damping: 24 }}
+                className="z-50 max-w-xs rounded-2xl border border-slate-200 bg-white/95 p-4 text-left shadow-2xl"
+              >
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
+                  Latest GitHub activity
+                </p>
+                <p className="mt-2 text-sm font-medium text-slate-950">
+                  {commitInfo.repo}
+                </p>
+                <p className="mt-1 text-sm text-slate-600">
+                  {commitInfo.message}
+                </p>
+                <p className="mt-2 text-xs text-slate-500">
+                  {commitInfo.timeAgo === "just now"
+                    ? commitInfo.timeAgo
+                    : `${commitInfo.timeAgo} ago`}
+                </p>
+              </motion.div>
+            )}
+
+            <div className="mt-4 grid gap-3 sm:grid-cols-2">
+              <div className="rounded-2xl bg-white/75 p-4">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
+                  Role
+                </p>
+                <p className="mt-2 text-sm font-medium text-slate-900">
+                  Web developer
+                </p>
+              </div>
+              <div className="rounded-2xl bg-white/75 p-4">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
+                  Focus
+                </p>
+                <p className="mt-2 text-sm font-medium text-slate-900">
+                  Elegant, usable interfaces
+                </p>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </div>
     </section>
   );
 }

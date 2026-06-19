@@ -2,6 +2,7 @@
 import Hero from "./components/Hero";
 import About from "./components/About";
 import Projects from "./components/ProjectsSection";
+import Writeups from "./components/WriteupsSection";
 import Timeline from "./components/Timeline";
 import Resume from "./components/Resume";
 
@@ -38,6 +39,7 @@ function App() {
       <About />
       <Timeline />
       <Projects />
+      {/* <Writeups /> */}
       <Resume />
     </>
   );

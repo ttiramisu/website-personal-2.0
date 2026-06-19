@@ -1,17 +1,12 @@
-import { useState, useEffect } from "react";
-import { useLocation, Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
-import { projects } from "../data/projectsData";
-import { projectSlug } from "../utils/projectSlug";
+import { writeupRoutes } from "../data/writeupsData";
 
-import "../App.css";
-
-
-export default function AllProjects() {
+export default function AllWriteups() {
   const location = useLocation();
   const [filter, setFilter] = useState<string>("All");
 
-  // Scroll to anchor if present
   useEffect(() => {
     if (location.hash) {
       const id = location.hash.replace("#", "");
@@ -22,14 +17,16 @@ export default function AllProjects() {
     }
   }, [location.hash]);
 
-  // Apply filter
-  const filteredProjects =
-    filter === "All" ? projects : projects.filter((p) => p.type === filter);
+  const tags = ["All", "Web", "Forensics", "RE", "Auth", "SQLi", "Archive", "Stego", "Binary", "IDA"];
+  const filteredWriteups =
+    filter === "All"
+      ? writeupRoutes
+      : writeupRoutes.filter((writeup) => writeup.tags.includes(filter));
 
-  const filters = ["All", "Python", "Applications", "Websites", "Publicity"];
+  const sortedWriteups = filteredWriteups.slice().sort((a, b) => b.date.localeCompare(a.date));
 
   return (
-    <section id="all-projects" className="section-shell">
+    <section id="all-writeups" className="section-shell">
       <div className="section-inner">
         <motion.span
           initial={{ opacity: 0, y: 10 }}
@@ -37,7 +34,7 @@ export default function AllProjects() {
           transition={{ duration: 0.5 }}
           className="section-kicker"
         >
-          All projects
+          Writeups
         </motion.span>
 
         <motion.h2
@@ -46,7 +43,7 @@ export default function AllProjects() {
           transition={{ duration: 0.55 }}
           className="section-title max-w-2xl"
         >
-          A complete view of my work
+          Markdown CTF writeups
         </motion.h2>
 
         <motion.p
@@ -55,7 +52,7 @@ export default function AllProjects() {
           transition={{ duration: 0.55, delay: 0.05 }}
           className="section-copy"
         >
-          Browse everything from web projects to design and publicity work.
+          A home for polished, readable walkthroughs and challenge notes.
         </motion.p>
 
         <motion.div
@@ -64,17 +61,17 @@ export default function AllProjects() {
           transition={{ duration: 0.5, delay: 0.08 }}
           className="mt-10 flex flex-wrap gap-3"
         >
-          {filters.map((f) => (
+          {tags.map((tag) => (
             <button
-              key={f}
-              onClick={() => setFilter(f)}
+              key={tag}
+              onClick={() => setFilter(tag)}
               className={`rounded-full border px-4 py-2 text-sm font-medium transition ${
-                filter === f
+                filter === tag
                   ? "border-slate-900 bg-slate-900 text-white"
                   : "border-slate-200 bg-white/70 text-slate-600 hover:border-slate-300 hover:text-slate-900"
               }`}
             >
-              {f}
+              {tag}
             </button>
           ))}
         </motion.div>
@@ -85,39 +82,39 @@ export default function AllProjects() {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3"
         >
-          {filteredProjects.map((project) => (
+          {sortedWriteups.map((writeup) => (
             <motion.article
-              key={project.name}
-              id={projectSlug(project.name)}
+              key={writeup.slug}
+              id={writeup.slug}
               className="soft-card flex flex-col overflow-hidden rounded-[1.75rem]"
             >
               <div className="border-b border-slate-200/70 bg-gradient-to-r from-slate-50 to-white px-6 py-5">
                 <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
-                  Project
+                  {writeup.date}
                 </p>
                 <h3 className="mt-2 text-xl font-semibold tracking-tight text-slate-950">
-                  {project.name}
+                  {writeup.title}
                 </h3>
               </div>
 
               <div className="flex flex-1 flex-col p-6">
                 <p className="text-sm leading-7 text-slate-600">
-                  {project.desc}
+                  {writeup.summary}
                 </p>
 
                 <div className="mt-5 flex flex-wrap gap-2">
-                  {project.tech.map((tech) => (
-                    <span key={tech} className="chip">
-                      {tech}
+                  {writeup.tags.map((tag) => (
+                    <span key={tag} className="chip">
+                      {tag}
                     </span>
                   ))}
                 </div>
 
                 <Link
-                  to={`/projects/${encodeURIComponent(project.name)}#${projectSlug(project.name)}`}
+                  to={`/writeups/${writeup.slug}`}
                   className="secondary-button mt-6 w-fit"
                 >
-                  View project
+                  Read writeup
                 </Link>
               </div>
             </motion.article>
@@ -130,8 +127,8 @@ export default function AllProjects() {
           transition={{ duration: 0.55, delay: 0.12 }}
           className="mt-10"
         >
-          <Link to="/#projects" className="secondary-button">
-            Back to featured projects
+          <Link to="/#writeups" className="secondary-button">
+            Back to preview
           </Link>
         </motion.div>
       </div>

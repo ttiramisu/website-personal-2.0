@@ -4,87 +4,97 @@ import { motion } from "framer-motion";
 export default function About() {
   const contactLinks = [
     { href: "mailto:ttiramisu10@gmail.com", icon: Mail, label: "Email" },
-    { href: "https://www.linkedin.com/in/jin-zijie", icon: Linkedin, label: "LinkedIn" },
+    {
+      href: "https://www.linkedin.com/in/jin-zijie",
+      icon: Linkedin,
+      label: "LinkedIn",
+    },
     { href: "https://github.com/ttiramisu", icon: Github, label: "GitHub" },
-    { href: "https://www.instagram.com/caketoll", icon: Instagram, label: "Instagram" },
+    {
+      href: "https://www.instagram.com/caketoll",
+      icon: Instagram,
+      label: "Instagram",
+    },
   ];
 
   return (
     <section
       id="about"
-      className="pb-40 min-h-screen flex flex-col justify-center items-center text-center px-5 bg-gradient-to-b from-black/90 via-black/90 to-black/90 select-none"
+      className="section-shell"
     >
-      {/* Terminal-style path line */}
-      <motion.p
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="text-sm md:text-base text-yellow-400 font-mono mb-3 tracking-tight"
-      >
-        ttiramisu@ttiramisu:/mnt/personal/about
-      </motion.p>
+      <div className="section-inner grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.55 }}
+          className="soft-panel rounded-[2rem] p-8 md:p-10"
+        >
+          <span className="section-kicker">About me</span>
+          <h2 className="section-title">Thoughtful design, practical execution</h2>
+          <p className="section-copy">
+            I enjoy building polished web experiences that feel calm, readable,
+            and deliberate. My work sits at the intersection of frontend
+            development, visual design, and clear communication.
+          </p>
 
-      {/* Main heading */}
-      <motion.h2
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7 }}
-        className="text-3xl md:text-6xl font-extrabold text-gray-100 mb-6 tracking-tight drop-shadow-[0_0_10px_rgba(255,255,0,0.4)]"
-      >
-        About&nbsp;Me
-      </motion.h2>
+          <div className="mt-8 grid gap-3 sm:grid-cols-2">
+            {[
+              "Responsive layouts",
+              "Modern frontend tools",
+              "Friendly micro-interactions",
+              "Detail-oriented execution",
+            ].map((item) => (
+              <div key={item} className="chip justify-start">
+                {item}
+              </div>
+            ))}
+          </div>
+        </motion.div>
 
-      {/* Terminal-style description */}
-      <motion.p
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="text-md md:text-lg max-w-3xl text-gray-300 font-mono leading-relaxed"
-      >
-        <span className="text-yellow-400">~$</span>{" "}
-        <span>
-          Hi, I’m Jin Zijie — a driven and innovative student
-          with a passion for web development and design. Skilled in creating
-          intuitive, visually appealing websites that seamlessly blend
-          functionality with creativity. As a proactive learner and collaborative
-          thinker, I enjoy exploring emerging technologies, tackling challenging
-          problems, and designing digital and physical experiences that leave a meaningful
-          impact.
-        </span>
-        <span className="blinking-cursor text-yellow-400">|</span>
-      </motion.p>
+        <div className="grid gap-6">
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55, delay: 0.05 }}
+            className="soft-card rounded-[2rem] p-8"
+          >
+            <h3 className="subtle-heading">What I care about</h3>
+            <p className="section-copy mt-3">
+              Turning complexity into something visually calm and easy to use.
+            </p>
+          </motion.div>
 
-      {/* Contact / Reach Me with icons */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.9 }}
-        className="mt-10 flex flex-wrap justify-center gap-8"
-      >
-        {contactLinks.map((item, idx) => {
-          const Icon = item.icon;
-          return (
-              <a
-                key={idx}
-                href={item.href}
-                target={item.href.startsWith("http") ? "_blank" : undefined}
-                rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                aria-label={item.label}
-                className="text-yellow-400 hover:text-yellow-300 transform transition duration-300 ease-in-out hover:scale-110 hover:-translate-y-1"
-              >
-              <Icon size={28} />
-            </a>
-          );
-        })}
-      </motion.div>
-
-      {/* Accent underline */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-        className="mt-10 w-24 h-[2px] bg-gradient-to-r from-transparent via-yellow-400 to-transparent rounded-full opacity-70"
-      ></motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55, delay: 0.1 }}
+            className="soft-card rounded-[2rem] p-8"
+          >
+            <h3 className="subtle-heading">Reach me</h3>
+            <div className="mt-4 flex flex-wrap gap-3">
+              {contactLinks.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    target={item.href.startsWith("http") ? "_blank" : undefined}
+                    rel={
+                      item.href.startsWith("http")
+                        ? "noopener noreferrer"
+                        : undefined
+                    }
+                    aria-label={item.label}
+                    className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-slate-200 bg-white/80 text-slate-700 transition hover:-translate-y-0.5 hover:text-slate-950"
+                  >
+                    <Icon size={18} />
+                  </a>
+                );
+              })}
+            </div>
+          </motion.div>
+        </div>
+      </div>
     </section>
   );
 }
