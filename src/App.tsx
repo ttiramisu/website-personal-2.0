@@ -4,7 +4,6 @@ import About from "./components/About";
 import Projects from "./components/ProjectsSection";
 // import Writeups from "./components/WriteupsSection";
 import Timeline from "./components/Timeline";
-import Resume from "./components/Resume";
 
 import "./App.css";
 
@@ -40,7 +39,6 @@ function App() {
       <Timeline />
       <Projects />
       {/* <Writeups /> */}
-      <Resume />
     </>
   );
 }

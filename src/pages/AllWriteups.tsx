@@ -17,7 +17,7 @@ export default function AllWriteups() {
     }
   }, [location.hash]);
 
-  const tags = ["All", "Web", "Forensics", "RE", "Auth", "SQLi", "Archive", "Stego", "Binary", "IDA"];
+  const tags = ["All",  "Forens"];
   const filteredWriteups =
     filter === "All"
       ? writeupRoutes

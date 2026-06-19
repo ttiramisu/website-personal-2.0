@@ -23,7 +23,7 @@ export default function WriteupsSection() {
           transition={{ duration: 0.55 }}
           className="section-title max-w-2xl"
         >
-          CTF notes in markdown
+          CTF Writeups
         </motion.h2>
 
         <motion.p
@@ -33,7 +33,7 @@ export default function WriteupsSection() {
           className="section-copy"
         >
           A dedicated space for challenge writeups, capture notes, and clean
-          markdown-based walkthroughs.
+          walkthroughs.
         </motion.p>
 
         <div className="mt-12 grid gap-6 md:grid-cols-3">

@@ -12,7 +12,6 @@ export default function Navigation() {
     { label: "Education", id: "education" },
     { label: "Projects", id: "projects" },
     // { label: "Writeups", id: "writeups" },
-    { label: "Resume", id: "resume" },
   ];
 
   const scrollToSection = (id: string) => {

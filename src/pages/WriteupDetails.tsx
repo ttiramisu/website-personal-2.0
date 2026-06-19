@@ -52,7 +52,7 @@ export default function WriteupDetails() {
           transition={{ duration: 0.5 }}
           className="section-kicker"
         >
-          Markdown writeup
+          Writeup
         </motion.span>
 
         <motion.h1
@@ -72,6 +72,54 @@ export default function WriteupDetails() {
         >
           {writeup.summary}
         </motion.p>
+
+        {writeup.challengeDetails && (
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55, delay: 0.06 }}
+            className="soft-card mt-8 grid gap-4 rounded-[1.75rem] p-6 md:grid-cols-2"
+          >
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
+                Challenge details
+              </p>
+              <h2 className="mt-2 text-2xl font-semibold tracking-tight text-slate-950">
+                {writeup.challengeDetails.challenge}
+              </h2>
+              <p className="mt-2 text-sm leading-7 text-slate-600">
+                {writeup.challengeDetails.description || "Details captured during the competition."}
+              </p>
+            </div>
+
+            <dl className="grid gap-4 text-sm md:grid-cols-2">
+              <div>
+                <dt className="text-slate-500">Competition</dt>
+                <dd className="mt-1 font-medium text-slate-950">
+                  {writeup.challengeDetails.competition}
+                </dd>
+              </div>
+              <div>
+                <dt className="text-slate-500">Difficulty</dt>
+                <dd className="mt-1 font-medium text-slate-950">
+                  {writeup.challengeDetails.difficulty}
+                </dd>
+              </div>
+              <div>
+                <dt className="text-slate-500">Author</dt>
+                <dd className="mt-1 font-medium text-slate-950">
+                  {writeup.challengeDetails.author}
+                </dd>
+              </div>
+              <div>
+                <dt className="text-slate-500">Category</dt>
+                <dd className="mt-1 font-medium text-slate-950">
+                  {writeup.challengeDetails.category || "Unspecified"}
+                </dd>
+              </div>
+            </dl>
+          </motion.div>
+        )}
 
         <motion.div
           initial={{ opacity: 0, y: 16 }}
