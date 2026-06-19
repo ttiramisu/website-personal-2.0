@@ -11,13 +11,13 @@ export interface Project {
 
 export const projects: Project[] = [
     {
-    name: "UI Library",
+    name: "UI Museum",
     desc: "A web application that contains a collection fo terrible UI components",
     tech: ["HTML", "CSS", "JavaScript"],
     link: "https://github.com/ttiramisu/mesuem-of-worst-ui",
     type: "Websites",
     w_overview:
-      "UI Library is a web application that showcases a collection of intentionally bad UI components, designed to highlight common design pitfalls and encourage better user experience practices.",
+      "UI Museum is a web application that showcases a collection of intentionally bad UI components, designed to highlight common design pitfalls and encourage better user experience practices.",
     w_chall:
       "The main challenge was creating a variety of UI components that are intentionally bad while still being functional and visually distinct. I had to think creatively about how to break design principles in a way that is both humorous and educational.",
     w_learn:

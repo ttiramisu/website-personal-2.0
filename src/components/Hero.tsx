@@ -96,7 +96,7 @@ export default function Hero() {
             className="section-kicker"
           >
             <Sparkles size={14} />
-            Design-first portfolio
+            TTIRAMISU
           </motion.span>
 
           <motion.h1
