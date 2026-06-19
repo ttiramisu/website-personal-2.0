@@ -10,7 +10,7 @@ export default function Footer() {
         </div>
 
         <p className="text-sm text-slate-500">
-          Designed and built with Vite, React, and a calmer aesthetic.
+          Designed and built with Vite.
         </p>
       </div>
     </footer>
