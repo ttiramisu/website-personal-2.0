@@ -43,7 +43,7 @@ export default function AllWriteups() {
           transition={{ duration: 0.55 }}
           className="section-title max-w-2xl"
         >
-          Markdown CTF writeups
+          CTF writeups
         </motion.h2>
 
         <motion.p
