@@ -1,7 +1,5 @@
 # sussy2
 
-> Challenge focus: identifying files
-
 ## Overview
 A zipped archive file was given to the users, asking to find the flag from within the files.
 
@@ -48,7 +46,7 @@ Using this to install the app:
 adb install /path/to/your/dist.apk
 ```
 
-* Note: You might have to sign and align the apk to install it.
+> Note: You might have to sign and align the apk to install it.
 
 This installs an app on the emulator with the name of suspicious.
 Launching the app gives this result on the screen:
@@ -60,7 +58,7 @@ Initial suspicion of ROT13 is used here to cipher the letters.
 Putting ```fpgs{Vs_2u8e8_j9f_9a_8aqc5va2!!!}``` through ROT13 on cyberchef returns the following:
 ```sctf{If_2h8r8_w9s_9n_8ndp5in2!!!}```
 
-However, this still did not give the flag. Most CTFs like to use leetspeek for their flags.
+However, this still did not give the flag. Most CTFs like to use leetspeek for their flags. Futher confirmation with the challenge setter showed that it is not ROT13 too.
 Since nothing except the first word in the flag made sense, we know that the cipher is not ROT13, but with something else that edits the numbers too.
 
 A quick Google search showed that ROT13 with number shifts is ROT18, where the letters undergo ROT13 and the numbers undergo ROT5
