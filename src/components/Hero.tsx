@@ -1,4 +1,9 @@
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import {
+  motion,
+  useMotionValue,
+  useSpring,
+  AnimatePresence,
+} from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { useState, useEffect } from "react";
 
@@ -32,7 +37,7 @@ export default function Hero() {
     async function fetchLatestPush() {
       try {
         const res = await fetch(
-          "https://api.github.com/users/ttiramisu/events/public"
+          "https://api.github.com/users/ttiramisu/events/public",
         );
         if (!res.ok) return;
 
@@ -40,7 +45,7 @@ export default function Hero() {
         if (!Array.isArray(events)) return;
 
         const pushEvent = (events as GithubPublicEvent[]).find(
-          (e): e is GithubPushEvent => e.type === "PushEvent"
+          (e): e is GithubPushEvent => e.type === "PushEvent",
         );
 
         if (pushEvent) {
@@ -61,9 +66,13 @@ export default function Hero() {
   }, []);
 
   function handleMouseMove(e: React.MouseEvent) {
-    // offset tooltip slightly to the side and below cursor
-    mouseX.set(e.clientX + 40);
-    mouseY.set(e.clientY - 20);
+    const bounds = e.currentTarget.getBoundingClientRect();
+
+    const x = e.clientX - bounds.left;
+    const y = e.clientY - bounds.top;
+
+    mouseX.set(x);
+    mouseY.set(y);
   }
 
   function timeSince(date: Date) {
@@ -141,7 +150,7 @@ export default function Hero() {
                 <span key={item} className="chip">
                   {item}
                 </span>
-              )
+              ),
             )}
           </motion.div>
         </div>
@@ -163,37 +172,39 @@ export default function Hero() {
               className="aspect-square w-full rounded-[1.5rem] object-cover"
             />
 
-            {isHovered && commitInfo && (
-              <motion.div
-                style={{
-                  position: "fixed",
-                  left: springX,
-                  top: springY,
-                  pointerEvents: "none",
-                  transform: "translateY(-50%)",
-                }}
-                initial={{ opacity: 0, x: 10, scale: 0.96 }}
-                animate={{ opacity: 1, x: 0, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.92 }}
-                transition={{ type: "spring", stiffness: 260, damping: 24 }}
-                className="z-50 max-w-xs rounded-2xl border border-slate-200 bg-white/95 p-4 text-left shadow-2xl"
-              >
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
-                  Latest GitHub activity
-                </p>
-                <p className="mt-2 text-sm font-medium text-slate-950">
-                  {commitInfo.repo}
-                </p>
-                <p className="mt-1 text-sm text-slate-600">
-                  {commitInfo.message}
-                </p>
-                <p className="mt-2 text-xs text-slate-500">
-                  {commitInfo.timeAgo === "just now"
-                    ? commitInfo.timeAgo
-                    : `${commitInfo.timeAgo} ago`}
-                </p>
-              </motion.div>
-            )}
+            <AnimatePresence>
+              {isHovered && commitInfo && (
+                <motion.div
+                  style={{
+                    position: "absolute",
+                    left: springX,
+                    top: springY,
+                    pointerEvents: "none",
+                    transform: "translateY(-50%)",
+                  }}
+                  initial={{ opacity: 0, x: 10, scale: 0.96 }}
+                  animate={{ opacity: 1, x: 0, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.92 }}
+                  transition={{ type: "spring", stiffness: 260, damping: 24 }}
+                  className="pointer-events-none z-50 max-w-xs rounded-2xl border border-slate-200 bg-white/95 p-4 text-left shadow-2xl"
+                >
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
+                    Latest GitHub activity
+                  </p>
+                  <p className="mt-2 text-sm font-medium text-slate-950">
+                    {commitInfo.repo}
+                  </p>
+                  <p className="mt-1 text-sm text-slate-600">
+                    {commitInfo.message}
+                  </p>
+                  <p className="mt-2 text-xs text-slate-500">
+                    {commitInfo.timeAgo === "just now"
+                      ? commitInfo.timeAgo
+                      : `${commitInfo.timeAgo} ago`}
+                  </p>
+                </motion.div>
+              )}
+            </AnimatePresence>
 
             <div className="mt-4 grid gap-3 sm:grid-cols-2">
               <div className="rounded-2xl bg-white/75 p-4">
