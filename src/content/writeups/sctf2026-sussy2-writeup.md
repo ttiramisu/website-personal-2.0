@@ -3,10 +3,6 @@
 ## Overview
 A zipped archive file was given to the users, asking to find the flag from within the files.
 
-## Recon
-
-1. Inspect the file given
-
 ## Exploit path
 
 Upon unzipping the file, the files inside the unzipped file looks very suspicious

@@ -1,9 +1,8 @@
 import { useEffect } from "react";
 import { useLocation, useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
 import { getWriteupBySlug } from "../data/writeupsData";
+import MarkdownRenderer from "../components/MarkdownRenderer";
 
 const writeupModules = import.meta.glob("../content/writeups/*.md", {
   eager: true,
@@ -128,7 +127,7 @@ export default function WriteupDetails() {
           className="mt-8 flex flex-wrap gap-2"
         >
           {writeup.tags.map((tag) => (
-            <span key={tag} className="chip">
+            <span key={tag} className="chip"> 
               {tag}
             </span>
           ))}
@@ -141,7 +140,7 @@ export default function WriteupDetails() {
           className="soft-card mt-12 rounded-[2rem] p-7 md:p-10"
         >
           <div className="markdown-content">
-            <ReactMarkdown remarkPlugins={[remarkGfm]}>{markdown}</ReactMarkdown>
+            <MarkdownRenderer content={markdown} />
           </div>
         </motion.article>
 

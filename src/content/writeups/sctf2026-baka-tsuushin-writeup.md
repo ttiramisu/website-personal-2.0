@@ -3,9 +3,6 @@
 ## Overview
 A .E01 file was provided, asking to find the flag from within.
 
-## Recon
-1. Inspect the file given
-
 ## Exploit Path
 We need to mount the .E01 file to inspect the contents. We can use tools like autopsy, but I will use ```ewf-tools``` to mount the file instead.
 

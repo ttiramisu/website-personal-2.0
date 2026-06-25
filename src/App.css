@@ -162,96 +162,181 @@
 }
 
 .markdown-content {
+  width: min(100%, 74ch);
+  margin: 0 auto;
   color: #334155;
+  font-size: 1.03rem;
   line-height: 1.8;
 }
 
-.markdown-content h1,
-.markdown-content h2,
-.markdown-content h3,
-.markdown-content h4 {
-  margin: 2rem 0 0.8rem;
+.markdown-content> :first-child {
+  margin-top: 0;
+}
+
+.markdown-content> :last-child {
+  margin-bottom: 0;
+}
+
+.markdown-content :where(h1, h2, h3, h4, h5, h6) {
+  margin: 2.1rem 0 0.9rem;
   color: #0f172a;
-  letter-spacing: -0.03em;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.15;
+  scroll-margin-top: 6.5rem;
 }
 
-.markdown-content h1 {
-  font-size: 2.2rem;
+.markdown-content :where(h1) {
+  font-size: clamp(2.1rem, 4vw, 3.35rem);
 }
 
-.markdown-content h2 {
-  font-size: 1.6rem;
+.markdown-content :where(h2) {
+  font-size: clamp(1.6rem, 2.5vw, 2.2rem);
 }
 
-.markdown-content h3 {
-  font-size: 1.25rem;
+.markdown-content :where(h3) {
+  font-size: 1.35rem;
 }
 
-.markdown-content p,
-.markdown-content ul,
-.markdown-content ol,
-.markdown-content blockquote,
-.markdown-content pre,
-.markdown-content table {
-  margin: 1rem 0;
+.markdown-content :where(h4) {
+  font-size: 1.1rem;
+}
+
+.markdown-content :where(p, ul, ol, blockquote, .markdown-pre, .markdown-table, hr) {
+  margin: 1.25rem 0;
 }
 
 .markdown-content a {
   color: #4f46e5;
+  font-weight: 500;
   text-decoration: underline;
-  text-underline-offset: 0.2em;
+  text-underline-offset: 0.18em;
 }
 
-.markdown-content ul,
-.markdown-content ol {
+.markdown-content :where(strong) {
+  color: #0f172a;
+  font-weight: 650;
+}
+
+.markdown-content :where(em) {
+  color: #1e293b;
+}
+
+.markdown-content :where(p) {
+  color: #334155;
+}
+
+.markdown-content :where(ul, ol) {
   padding-left: 1.4rem;
 }
 
-.markdown-content li + li {
-  margin-top: 0.4rem;
+.markdown-content :where(li) {
+  padding-left: 0.15rem;
 }
 
-.markdown-content blockquote {
-  border-left: 3px solid rgba(99, 102, 241, 0.35);
-  padding-left: 1rem;
+.markdown-content li+li {
+  margin-top: 0.45rem;
+}
+
+.markdown-content :where(blockquote) {
+  border-left: 4px solid rgba(99, 102, 241, 0.35);
+  border-radius: 0 1rem 1rem 0;
+  background: rgba(99, 102, 241, 0.06);
+  padding: 1rem 1.1rem;
   color: #475569;
 }
 
-.markdown-content pre {
+.markdown-content :where(hr) {
+  border: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(148, 163, 184, 0.7), transparent);
+}
+
+.markdown-content :where(:not(pre) > code) {
+  font-size: 0.92em;
+  color: #edeef1;
+}
+
+p>code {
+  padding: 0.16rem 0.38rem;
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  border-radius: 0.45rem;
+  background: rgba(148, 163, 184, 0.14);
+  color: #0f172a !important;
+}
+
+.markdown-pre {
   overflow-x: auto;
   border-radius: 1rem;
   border: 1px solid rgba(148, 163, 184, 0.2);
   background: #0f172a;
+  box-shadow: 0 16px 30px rgba(15, 23, 42, 0.14);
+}
+
+.markdown-pre__label {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.7rem 0.9rem 0;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #94a3b8;
+}
+
+.markdown-pre pre {
+  margin: 0;
+  padding: 1rem 1.1rem 1.15rem;
+  overflow-x: auto;
   color: #e2e8f0;
-  padding: 1rem 1.1rem;
+  background: transparent;
 }
 
-.markdown-content code {
-  border-radius: 0.4rem;
-  background: rgba(148, 163, 184, 0.16);
-  padding: 0.15rem 0.35rem;
-  font-size: 0.95em;
-}
-
-.markdown-content pre code {
+.markdown-pre pre code {
   background: transparent;
   padding: 0;
+  color: inherit;
 }
 
-.markdown-content table {
+.markdown-table {
+  overflow-x: auto;
+  border-radius: 1rem;
+}
+
+.markdown-table table {
   width: 100%;
-  border-collapse: collapse;
+  min-width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 1rem;
 }
 
-.markdown-content th,
-.markdown-content td {
+.markdown-content :where(th, td) {
   border: 1px solid rgba(148, 163, 184, 0.2);
   padding: 0.7rem 0.85rem;
   text-align: left;
 }
 
-.markdown-content img {
+.markdown-content :where(th) {
+  background: rgba(248, 250, 252, 0.92);
+  color: #0f172a;
+  font-weight: 650;
+}
+
+.markdown-content :where(tr:nth-child(even) td) {
+  background: rgba(248, 250, 252, 0.68);
+}
+
+.markdown-content :where(img) {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 1.5rem auto;
   border-radius: 1rem;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  box-shadow: 0 16px 32px rgba(15, 23, 42, 0.12);
 }
 
 .nav-shell {
